@@ -1,0 +1,13 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "i18n-ally.localesPaths": [
+        "src/locales",
+        "src/locales/lang",
+        "src/components/setting-drawer/locales",
+        "src/views/dashboard/monitor/locales",
+        "src/views/dashboard/analysis/locales",
+        "src/views/form/basic-form/locales",
+        "src/views/form/advance-form/locales",
+        "src/views/form/step-form/locales"
+    ]
+}
