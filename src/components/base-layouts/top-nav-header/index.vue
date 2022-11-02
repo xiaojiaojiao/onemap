@@ -1,5 +1,5 @@
 <template>
-  <div :class="classNames">
+  <div :class="classNames" style="position:relative">
     <div ref="headRef" :class="headerClassName">
       <div :class="`${prefixedClassName}-main-left`" @click="handleMenuHeaderClick">
         <div :class="`${prefixedClassName}-logo`" key="logo" id="logo">
@@ -7,7 +7,8 @@
           <div v-else>
             <router-link :to="{ name: 'index' }">
               <img src="@/assets/logo.png" alt="logo" />
-              <h1>一张图</h1>
+              <!-- <div>公众服务一张图</div> -->
+              <img src="@/assets/logoonemap.png"  style="height:80px"/>
             </router-link>
           </div>
         </div>
@@ -24,24 +25,27 @@
           @update:selectedKeys="handleSelectedKeys"
         />
       </div>
-      <div>
-        111
+      <div class="toggle">
+        <div :style="{display:searcFlag == true?'none':'block'}" @click="showSearch"><caret-down-outlined /></div>
+        <div :style="{display:searcFlag == true?'block':'none'}" @click="hideSearch"><caret-up-outlined /></div>
       </div>
       <!-- <right-content>
         <slot name="rightContent" />
       </right-content> -->
     </div>
+    <div class="detail" :style="{display:searcFlag == true?'block':'none'}"></div>
   </div>
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue';
+import { PropType, ref } from 'vue';
 import { defineComponent, computed, toRefs } from 'vue';
 import { useProProvider } from '../pro-provider/index';
 import BaseMenu from '@/components/base-layouts/base-menu/index.vue';
 import RightContent from '../top-nav-header/right-content.vue';
 import type { RouteProps } from '../typing';
 import type { MenuTheme } from 'ant-design-vue';
+import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons-vue';
 
 export default defineComponent({
   props: {
@@ -78,6 +82,16 @@ export default defineComponent({
   },
   emits: ['update:openKeys', 'update:selectedKeys'],
   setup(props, { slots, emit }) {
+
+    const searcFlag = ref(false);
+    const showSearch = ()=>{
+      searcFlag.value = true;
+    };
+     const hideSearch = ()=>{
+      searcFlag.value = false;
+    };
+
+
     const { theme, contentWidth, prefixCls: customizePrefixCls } = toRefs(props);
     const { getPrefixCls } = useProProvider();
     const prefixedClassName = customizePrefixCls.value || getPrefixCls('top-nav-header');
@@ -120,11 +134,17 @@ export default defineComponent({
       handleSelectedKeys,
       handleOpenKeys,
       handleMenuHeaderClick,
+
+      searcFlag,
+      showSearch,
+      hideSearch
     };
   },
   components: {
     BaseMenu,
     RightContent,
+    CaretUpOutlined,
+    CaretDownOutlined
   },
 });
 </script>
@@ -143,6 +163,23 @@ body {
 
 .ant-layout-header{
   background-color: #1890ff;
+  background-image: url('../../../assets/bodybj.jpg');
+  background-size: 100%;
+}
+body .ant-pro-top-nav-header-logo img{
+  height: 40px;
+}
+.toggle{
+      width: 40px;
+    flex-direction: row;
+    display: flex;
+}
+.detail{
+  position: absolute;
+  height: 500px;
+  width: 250px;
+  background:hsla(0,0%,100%,.8);
+  right: 0;
 }
 
 

@@ -85,6 +85,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       },
     },
     server: {
+      port:8080,
       host: true,
       proxy:
         env.VITE_HTTP_MOCK && env.VITE_MOCK && process.env.NODE_ENV !== 'production'

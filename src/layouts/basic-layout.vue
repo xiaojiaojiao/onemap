@@ -66,7 +66,7 @@
         <global-footer />
       </a-layout>
     </a-layout>
-    <setting-drawer />
+    <!-- <setting-drawer /> -->
   </pro-provider>
 </template>
 
@@ -140,5 +140,12 @@ export default defineComponent({
 <style lang="less">
 body {
   @import '../components/base-layouts/basic-layout.less';
+   .ant-pro-basicLayout-content {
+    position: relative;
+    margin: 0 !important;
+    background: #f7f7f7;
+    padding-top: 30px;
+}
+
 }
 </style>

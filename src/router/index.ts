@@ -15,79 +15,81 @@ export const routes: MenuDataItem[] = [
   {
     name: 'index',
     path: '/',
-    redirect: '/workplace',
+    redirect: '/warning',
     component: Layout,
     children: [
       {
-        path: '/workplace',
-        name: 'Workplace',
-        meta: { icon: 'TableOutlined', title: 'pages.dashboard.workplace.title', lock: true },
-        component: h(RouteView, null, () => h(AsyncWorkplace)),
+        path: '/warning',
+        name: 'Warning',
+        meta: { icon: 'TableOutlined', title: '预警', lock: true },
+        component: (): Component =>
+        import(/* webpackChunkName: "dashboard" */ '@/views/warning/warning.vue'),
+        // component: h(RouteView, null, () => h(AsyncWorkplace)),
       },
       // dashboard
       {
-        path: '/dashboard/welcome',
-        name: 'welcome',
-        meta: { icon: 'TableOutlined', title: 'pages.dashboard.welcome.title' },
+        path: '/weather',
+        name: 'weather',
+        meta: { icon: 'TableOutlined', title: '气象' },
         component: (): Component =>
-          import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/workplace2/index.vue'),
+          import(/* webpackChunkName: "dashboard" */ '@/views/weather/weather.vue'),
       },
 
       // form
       {
-        path: '/form/step-form',
-        name: 'step-form',
-        meta: { title: 'form.stepform.basic.title', icon: 'TableOutlined' },
+        path: '/rain',
+        name: 'rain',
+        meta: { title: '降水', icon: 'TableOutlined' },
         component: (): Component =>
-          import(/* webpackChunkName: "form" */ '@/views/form/step-form/index.vue'),
+          import(/* webpackChunkName: "form" */ '@/views/rain/rain.vue'),
       },
 
 
       // list
       {
-        path: '/list/table-list',
-        name: 'table-list',
-        meta: { title: 'pages.list.tablelist.title', icon: 'TableOutlined'  },
+        path: '/river',
+        name: 'river',
+        meta: { title: '河道', icon: 'TableOutlined'  },
         component: (): Component =>
-          import(/* webpackChunkName: "list" */ '@/views/list/table-list/index.vue'),
+          import(/* webpackChunkName: "list" */ '@/views/river/river.vue'),
       },
 
 
       // exception
       {
-        name: 'exception403',
-        path: '/exception/403',
-        meta: { title: 'pages.exception.403.title', icon: 'TableOutlined' },
+        name: 'reservoir',
+        path: '/reservoir',
+        meta: { title: '水库', icon: 'TableOutlined' },
         component: () =>
-          import(/* webpackChunkName: "exception" */ '@/views/exception/403.vue'),
+          import(/* webpackChunkName: "exception" */ '@/views/reservoir/reservoir.vue'),
       },
 
 
       // result
       {
-        name: 'result-success',
-        path: '/result/success',
-        meta: { title: 'pages.result.success.title', icon: 'TableOutlined'  },
-        component: () => import(/* webpackChunkName: "result" */ '@/views/result/success.vue'),
+        name: 'drought',
+        path: '/drought',
+        meta: { title: '旱情', icon: 'TableOutlined'  },
+        component: () => import(/* webpackChunkName: "result" */ '@/views/drought/drought.vue'),
       },
 
       // system
       {
-        path: '/system/role-list',
-        name: 'role-list',
-        meta: { title: 'pages.system.role-list.title', icon: 'TableOutlined' },
+        path: '/website',
+        name: 'website',
+        meta: { title: '网站', icon: 'TableOutlined' },
         component: (): Component =>
-          import(/* webpackChunkName: "system" */ '@/views/system/role-list.vue'),
+          import(/* webpackChunkName: "system" */ '@/views/website/website.vue'),
       },
     
 
       // jump url
       {
-        path: '/jump-url/router',
-        name: 'jumpUrlExamples',
-        meta: { title: 'pages.jumpUrl.router.title', icon: 'TableOutlined' },
+        path: '/stationInfo',
+        name: 'stationInfo',
+        meta: { title: '测站信息', icon: 'TableOutlined' },
         component: (): Component =>
-          import(/* webpackChunkName: "jumpUrl" */ '@/views/examples/jump-url/index.vue'),
+          import(/* webpackChunkName: "jumpUrl" */ '@/views/stationInfo/stationInfo.vue'),
       },
      
     ],

@@ -83,7 +83,9 @@
     </a-layout-sider>
     <div class="showDiv" :style="{display:searcFlag == true?'none':'block'}" @click="showSearch">展开</div>
     <div class="hideDiv" :style="{display:searcFlag == true?'block':'none'}" @click="hideSearch">收起</div>
-    <div class="searchDiv" :style="{display:searcFlag == true?'block':'none'}">searchDiv</div>
+    <div class="searchDiv" :style="{display:searcFlag == true?'block':'none'}">
+      <test></test>
+    </div>
     <!-- <div class="searchInput">
        <a-cascader
         v-model:value="value"
@@ -110,6 +112,7 @@ import type { LayoutType } from '../typing';
 import type { MenuTheme , CascaderProps } from 'ant-design-vue';
 import type { Breakpoint } from '@/typing';
 import type { ShowSearchType } from 'ant-design-vue/es/cascader';
+import test from './test.vue'
 const SiderMenuProps = Object.assign({}, BaseMenuProps, {
   prefixCls: {
     type: String,
@@ -286,6 +289,7 @@ const filter: ShowSearchType['filter'] = (inputValue, path) => {
     BaseMenu,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
+    test,
     // [Menu.name]: Menu,
     // [Menu.Item.name]: Menu.Item,
   },
@@ -296,23 +300,26 @@ const filter: ShowSearchType['filter'] = (inputValue, path) => {
 body {
   @import url('./index.less');
 }
+body .ant-pro-sider-light{
+  background: rgba(0,82,185,0.2);
+}
 body .ant-pro-sider-light .ant-menu-light{
-  background: rgba(0,82,185,0.6);
+  background: rgba(0,82,185,0.0);
 }
 body .ant-pro-sider-light .ant-layout-sider-children{
-   background: rgba(0,82,185,0.6);
+   background: rgba(0,82,185,0.2);
    
 }
 .ant-menu-vertical > .ant-menu-item, .ant-menu-vertical-left > .ant-menu-item, .ant-menu-vertical-right > .ant-menu-item, .ant-menu-inline > .ant-menu-item, .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-left > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-right > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title{
   height: 60px !important;
   margin: 10 0;
-  background-image: rgba(0,82,185,.6) !important;  //左侧背景色
-  color: white;
+  background-image: rgba(0,82,185,.2) !important;  //左侧背景色
+  // color: white;
   
   // line-height: 40px;
 }
-.ant-menu-vertical > .ant-menu-item, .ant-menu-vertical-left > .ant-menu-item .ant-menu-item-selected {
-    color: #1890ff;
+.ant-menu-item .ant-menu-item-selected {
+    color: #1890ff !important;
   }
 
 
@@ -322,6 +329,11 @@ body .ant-pro-sider .ant-menu-inline .ant-menu-item, body .ant-pro-sider .ant-me
     flex-direction: column;
     padding-top: 10px;
     
+}
+.ant-menu-inline .ant-menu-selected::after, .ant-menu-inline .ant-menu-item-selected::after {
+    /* transform: scaleY(1); */
+    opacity: 1;
+    transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
  
@@ -353,8 +365,8 @@ body .ant-pro-sider .ant-menu-inline .ant-menu-item, body .ant-pro-sider .ant-me
     left: 100px;
     z-index: 99999;
     width: 300px;
-    height: 75%;
-    background: #eeeeee;
+    height: 80%;
+    background:hsla(0,0%,100%,.8);
     // border-radius: 0 10px 10px 0;
 }
 // .searchInput{
