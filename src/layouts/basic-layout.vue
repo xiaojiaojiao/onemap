@@ -1,7 +1,7 @@
 <template>
   <pro-provider :content-width="contentWidth">
     <a-layout class="ant-pro-basicLayout">
-      <template v-if="isMobile">
+      <!-- <template v-if="isMobile">
         <a-drawer
           :bodyStyle="{ padding: 0, height: '100%' }"
           placement="left"
@@ -37,7 +37,7 @@
         v-model:collapsed="collapsed"
         v-model:open-keys="openKeys"
         v-model:selected-keys="selectedKeys"
-      />
+      /> -->
       <a-layout>
         <header-view
           :theme="theme"
@@ -144,7 +144,8 @@ body {
     position: relative;
     margin: 0 !important;
     background: #f7f7f7;
-    padding-top: 30px;
+    // padding-top: 30px;
+    // height: calc(100% - 80px);
 }
 
 }

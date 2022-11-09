@@ -1,10 +1,11 @@
 <template>
   <!-- <water-mark content="Admin Pro" :disabled="false"> -->
     <water-mark content="" :disabled="false">
-    <left-menu-layout key="leftmenu-layout" v-if="layout === 'left'">
+    <!-- <left-menu-layout key="leftmenu-layout" v-if="layout === 'left'">
       <slot />
     </left-menu-layout>
-    <basic-layout key="basic-layout" v-else><slot /></basic-layout>
+    <basic-layout key="basic-layout" v-else><slot /></basic-layout> -->
+    <basic-layout key="basic-layout"><slot /></basic-layout>
   </water-mark>
 </template>
 

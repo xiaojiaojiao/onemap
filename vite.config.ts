@@ -93,7 +93,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           : {
               '/api': {
                 // backend url
-                target: 'https://store.antdv.com',
+                target: 'http://10.0.88.239:51001/', //统一服务
                 ws: false,
                 changeOrigin: true,
               },

@@ -1,7 +1,7 @@
 <template>
   <div id="userLayout" :class="['user-layout-wrapper']">
     <div class="container">
-      <div class="top">
+      <!-- <div class="top">
         <div class="header">
           <a href="/">
             <img src="~@/assets/logo.svg" class="logo" alt="logo" />
@@ -9,7 +9,7 @@
           </a>
         </div>
         <div class="desc">Ant Design 是西湖区最具影响力的 Web 设计规范</div>
-      </div>
+      </div> -->
 
       <router-view />
 
@@ -61,7 +61,7 @@ export default defineComponent({
     width: 100%;
     min-height: 100%;
     padding: 110px 0 144px;
-    background-image: url(~@/assets/background.svg);
+    // background-image: url(~@/assets/background.svg);
     background-repeat: no-repeat;
     background-position: center 110px;
     background-size: 100%;

@@ -1,7 +1,7 @@
 <template>
   <div class="ant-pro-user-layout">
     <div class="container">
-      <div class="top">
+      <!-- <div class="top">
         <div class="header">
           <a href="/">
             <img src="~@/assets/logo.svg" class="logo" alt="logo" />
@@ -9,7 +9,7 @@
           </a>
         </div>
         <div class="desc">Admin Pro 是针对 Vue3 语法开发的企业级脚手架</div>
-      </div>
+      </div> -->
       <div class="main-container">
         <a-row style="height: 100%; align-items: center; justify-content: center">
           <a-col :span="12" style="text-align: center; height: 416px">
@@ -65,7 +65,7 @@ export default defineComponent({
     width: 100%;
     min-height: 100%;
     padding: 110px 0 0;
-    background-image: url(~@/assets/background.svg);
+    // background-image: url(~@/assets/background.svg);
     background-repeat: no-repeat;
     background-position: center 110px;
     background-size: 100%;

@@ -88,6 +88,7 @@ export const useUserStore = defineStore('user', {
 
     async [LOGIN](info: LoginParams) {
       return new Promise((resolve, reject) => {
+        debugger;
         // call ajax
         postAccountLogin(info)
           .then(res => {

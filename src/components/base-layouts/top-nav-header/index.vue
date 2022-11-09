@@ -5,11 +5,13 @@
         <div :class="`${prefixedClassName}-logo`" key="logo" id="logo">
           <slot v-if="hasLogoSlot" name="logo" />
           <div v-else>
-            <router-link :to="{ name: 'index' }">
+            <a @click="toGuanwang">
               <img src="@/assets/logo.png" alt="logo" />
-              <!-- <div>公众服务一张图</div> -->
-              <img src="@/assets/logoonemap.png"  style="height:80px"/>
-            </router-link>
+              
+              <!-- <img src="@/assets/logoonemap.png"  style="height:80px"/> -->
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="height:80px;font-size: 25px;color: white;">山东水文公众服务一张图</span>
           </div>
         </div>
       </div>
@@ -25,10 +27,10 @@
           @update:selectedKeys="handleSelectedKeys"
         />
       </div>
-      <div class="toggle">
+      <!-- <div class="toggle">
         <div :style="{display:searcFlag == true?'none':'block'}" @click="showSearch"><caret-down-outlined /></div>
         <div :style="{display:searcFlag == true?'block':'none'}" @click="hideSearch"><caret-up-outlined /></div>
-      </div>
+      </div> -->
       <!-- <right-content>
         <slot name="rightContent" />
       </right-content> -->
@@ -38,8 +40,9 @@
 </template>
 
 <script lang="ts">
-import { PropType, ref } from 'vue';
-import { defineComponent, computed, toRefs } from 'vue';
+import type { PropType } from 'vue';
+import { ref , defineComponent, computed, toRefs } from 'vue';
+
 import { useProProvider } from '../pro-provider/index';
 import BaseMenu from '@/components/base-layouts/base-menu/index.vue';
 import RightContent from '../top-nav-header/right-content.vue';
@@ -124,6 +127,10 @@ export default defineComponent({
     };
     const handleMenuHeaderClick = (): void => {};
 
+    const toGuanwang = ()=>{
+      window.open('http://sdswj.sdwr.org.cn/');
+    };
+
     return {
       classNames,
       headerClassName,
@@ -137,14 +144,15 @@ export default defineComponent({
 
       searcFlag,
       showSearch,
-      hideSearch
+      hideSearch,
+      toGuanwang,
     };
   },
   components: {
     BaseMenu,
     RightContent,
     CaretUpOutlined,
-    CaretDownOutlined
+    CaretDownOutlined,
   },
 });
 </script>
@@ -153,17 +161,18 @@ export default defineComponent({
 body {
   @import url('./index.less');
   .ant-pro-basicLayout {
-    .ant-layout-header.ant-pro-fixed-header{
-       height: 73px !important;
-    line-height: 73px !important;
-    }
+    height: 100%;
+    // .ant-layout-header.ant-pro-fixed-header{
+    //    height: 73px !important;
+    // line-height: 73px !important;
+    // }
   }
   
 }
 
 .ant-layout-header{
   background-color: #1890ff;
-  background-image: url('../../../assets/bodybj.jpg');
+  background-image: url('../../../assets/bodybj.png');
   background-size: 100%;
 }
 body .ant-pro-top-nav-header-logo img{

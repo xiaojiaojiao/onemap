@@ -6,18 +6,26 @@ import type { MenuDataItem } from './typing';
 import Layout from '@/layouts/index.vue';
 // import UserLayout from '@/layouts/user-layout.vue';
 import UserLayout2 from '@/layouts/user-layout2.vue';
-import RouteView from '@/layouts/route-view.vue';
+// import RouteView from '@/layouts/route-view.vue';
 
-const AsyncWorkplace = defineAsyncComponent(
-  () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/workplace/index.vue'),
-);
+// const AsyncWorkplace = defineAsyncComponent(
+//   () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/workplace/index.vue'),
+// );
 export const routes: MenuDataItem[] = [
   {
     name: 'index',
     path: '/',
-    redirect: '/warning',
+    redirect: '/oneMap',
     component: Layout,
     children: [
+      {
+        path: '/oneMap',
+        name: 'oneMap',
+        meta: { icon: 'TableOutlined', title: '预警', lock: true },
+        component: (): Component =>
+        import(/* webpackChunkName: "dashboard" */ '@/views/oneMap/oneMap.vue'),
+        // component: h(RouteView, null, () => h(AsyncWorkplace)),
+      },
       {
         path: '/warning',
         name: 'Warning',

@@ -108,7 +108,7 @@ export default defineComponent({
     },
     headerHeight: {
       type: Number,
-      default: 48,
+      default: 73,
     },
     splitMenus: {
       type: Boolean,

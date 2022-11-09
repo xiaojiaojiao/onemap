@@ -1,10 +1,113 @@
 <template>
-  <div style="text-align:center">
-     <a-space>
-    <a-spin size="small" />
-    <a-spin />
-    <a-spin size="large" />
-  </a-space>
+  <div class="main">
+    <a-form id="formLogin" layout="vertical" class="user-layout-login">
+      <a-tabs centered :active-key="customActiveKey" @change="handleTabClick">
+        <a-tab-pane key="tab1" tab="账号密码登录">
+          <a-alert
+            v-if="isLoginError"
+            type="error"
+            show-icon
+            style="margin-bottom: 24px"
+            message="账户或密码错误"
+          />
+          <a-form-item v-bind="validateInfos.username">
+            <a-input
+              size="large"
+              v-model:value="modelRef.username"
+              placeholder="账户: admin"
+              style="width: 100%"
+            >
+              <template #prefix>
+                <user-outlined class="prefixIcon" />
+              </template>
+            </a-input>
+          </a-form-item>
+
+          <a-form-item v-bind="validateInfos.password">
+            <a-input-password
+              v-model:value="modelRef.password"
+              size="large"
+              placeholder="密码: admin or ant.design"
+            >
+              <template #prefix>
+                <lock-outlined class="prefixIcon" />
+              </template>
+            </a-input-password>
+          </a-form-item>
+        </a-tab-pane>
+
+        <a-tab-pane key="tab2" tab="手机号登录">
+          <a-form-item v-bind="validateInfos.mobile">
+            <a-input v-model:value="modelRef.mobile" size="large" type="text" placeholder="手机号">
+              <template #prefix>
+                <mobile-outlined class="prefixIcon" />
+              </template>
+            </a-input>
+          </a-form-item>
+
+          <a-row :gutter="16">
+            <a-col class="gutter-row" :span="16">
+              <a-form-item v-bind="validateInfos.captcha">
+                <a-input
+                  v-model:value="modelRef.captcha"
+                  size="large"
+                  type="text"
+                  placeholder="验证码"
+                >
+                  <template #prefix>
+                    <mail-outlined class="prefixIcon" />
+                  </template>
+                </a-input>
+              </a-form-item>
+            </a-col>
+            <a-col class="gutter-row" :span="8">
+              <a-button
+                class="getCaptcha"
+                tabindex="-1"
+                :disabled="smsSendBtn"
+                @click.stop.prevent="getCaptcha"
+              >
+                {{ (!smsSendBtn && '获取验证码') || time + ' s' }}
+              </a-button>
+            </a-col>
+          </a-row>
+        </a-tab-pane>
+      </a-tabs>
+
+      <a-form-item>
+        <a-checkbox v-model:cheched="modelRef.rememberMe">自动登录</a-checkbox>
+        <router-link to="/user/recover" class="forge-password" style="float: right">
+          忘记密码
+        </router-link>
+      </a-form-item>
+
+      <a-form-item style="margin-top: 24px">
+        <a-button
+          size="large"
+          type="primary"
+          html-type="submit"
+          class="login-button"
+          :loading="loginBtn"
+          @click="handleSubmit"
+        >
+          确定
+        </a-button>
+      </a-form-item>
+
+      <div class="user-login-other">
+        <span>其他登录方式</span>
+        <a>
+          <alipay-circle-outlined class="item-icon" />
+        </a>
+        <a>
+          <taobao-circle-outlined class="item-icon" />
+        </a>
+        <a>
+          <weibo-circle-outlined class="item-icon" />
+        </a>
+        <router-link class="register" to="/user/register">注册账户</router-link>
+      </div>
+    </a-form>
   </div>
 </template>
 

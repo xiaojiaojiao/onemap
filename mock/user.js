@@ -68,16 +68,16 @@ module.exports = {
   'POST /api/login/account': (req, res) => {
     const { password, username } = req.body;
 
-    if (!usernames.includes(username) || !passwords.includes(password)) {
-      res.status(400).send({
-        data: {
-          isLogin: true,
-        },
-        errorMessage: '账户或密码错误',
-        success: false,
-      });
-      return;
-    }
+    // if (!usernames.includes(username) || !passwords.includes(password)) {
+    //   res.status(400).send({
+    //     data: {
+    //       isLogin: true,
+    //     },
+    //     errorMessage: '账户或密码错误',
+    //     success: false,
+    //   });
+    //   return;
+    // }
 
     // 模拟请求延迟
     return new Promise(resolve => {
